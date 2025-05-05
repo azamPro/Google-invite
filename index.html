@@ -131,7 +131,7 @@
 
   <div class="container">
     <div class="left">
-      <canvas id="cardCanvas" width="1365" height="768"></canvas>
+      <canvas id="cardCanvas" width="5167" height="4798"></canvas>
     </div>
     <div class="right">
       <input type="text" id="nameInput" placeholder="اكتب اسمك هنا">
@@ -182,27 +182,10 @@
 
       setTimeout(() => {
         const link = document.createElement('a');
-        //link.download = `معايدة - ${name}.png`;
-        link.download = `image-user-print/معايدة - ${name}.png`;
+        link.download = `دعوة خاصة - ${name}.png`;
         link.href = canvas.toDataURL();
+        console.log(canvas.width, canvas.height); // should log 1365, 768
         link.click();
-        // إرسال نسخة للصورة إلى السيرفر لتخزينها
-        fetch('/save-image.php', {
-          method: 'POST',
-          body: JSON.stringify({
-            name: name,
-            image: canvas.toDataURL('image/png')
-          }),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }).then(res => res.json())
-          .then(data => {
-            console.log("✅ Image saved to server:", data);
-          }).catch(err => {
-            console.error("❌ Failed to save image on server:", err);
-          });
-
         document.getElementById('loader').style.display = 'none';
       }, 1000);
     }
