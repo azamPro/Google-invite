@@ -162,11 +162,6 @@
       image.src = 'google-invite.webp'; 
     };
 
-
-    image.onload = () => {
-      drawCanvas();
-    };
-
     input.addEventListener('input', () => {
       drawCanvas(input.value.trim());
     });
@@ -201,7 +196,8 @@
         const link = document.createElement('a');
         //link.download = `دعوة خاصة - ${name}.png`;
         //link.href = canvas.toDataURL();
-        const fileName = `دعوة خاصة - ${name}.png`;
+        //const fileName = `دعوة خاصة - ${name}.png`;
+        const fileName = `invitation-${name}.png`;
         link.setAttribute('download', fileName);
         link.setAttribute('href', canvas.toDataURL('image/png'));
         link.setAttribute('type', 'image/png');
