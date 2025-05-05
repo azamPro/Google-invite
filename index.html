@@ -163,11 +163,13 @@
       ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 
       if (name) {
-        ctx.font = 'bold 54px Tajawal';
-        ctx.fillStyle = '#ffffff'; // White name
+        const fontSize = canvas.height * 0.05; // 5% of height (adjust as needed)
+        ctx.font = `bold ${fontSize}px Tajawal`;
+        ctx.fillStyle = '#ffffff';
         ctx.textAlign = 'center';
-        ctx.fillText(name, canvas.width / 2, canvas.height / 2 - 40); // Above center
+        ctx.fillText(name, canvas.width / 2, canvas.height * 0.45); // adjust Y as needed
       }
+      
     }
 
     function downloadImage() {
