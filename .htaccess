@@ -1,4 +1,0 @@
-<FilesMatch "^(log\.txt|names\.json|downloads\.json)$">
-  Order Allow,Deny
-  Deny from all
-</FilesMatch>

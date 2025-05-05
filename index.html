@@ -150,13 +150,14 @@
     //const image = new Image();
     //image.src = 'google-invite.webp';
     const image = new Image();
-    image.src = 'google-invite.png'; 
+    image.src = '/google-invite.png';
 
     image.onload = () => {
       drawCanvas();
     };
 
     image.onerror = () => {
+      alert("❌ Failed to load image. Make sure it's named google-invite.png and is in the same folder as index.html");
       console.warn("WEBP failed, loading JPG fallback...");
       image.src = 'google-invite.webp'; 
     };
