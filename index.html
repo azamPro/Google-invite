@@ -147,8 +147,20 @@
     const canvas = document.getElementById('cardCanvas');
     const ctx = canvas.getContext('2d');
     const input = document.getElementById('nameInput');
+    //const image = new Image();
+    //image.src = 'google-invite.webp';
     const image = new Image();
     image.src = 'google-invite.webp';
+
+    image.onload = () => {
+      drawCanvas();
+    };
+
+    image.onerror = () => {
+      console.warn("WEBP failed, loading JPG fallback...");
+      image.src = 'google-invite.jpg';
+    };
+
 
     image.onload = () => {
       drawCanvas();
@@ -159,6 +171,8 @@
     });
 
     function drawCanvas(name = '') {
+      if (!image.complete) return; // don't draw until image is fully loaded
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 
