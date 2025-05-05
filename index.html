@@ -199,10 +199,17 @@
 
       setTimeout(() => {
         const link = document.createElement('a');
-        link.download = `دعوة خاصة - ${name}.png`;
-        link.href = canvas.toDataURL();
+        //link.download = `دعوة خاصة - ${name}.png`;
+        //link.href = canvas.toDataURL();
+        const fileName = `دعوة خاصة - ${name}.png`;
+        link.setAttribute('download', fileName);
+        link.setAttribute('href', canvas.toDataURL('image/png'));
+        link.setAttribute('type', 'image/png');
+
         console.log(canvas.width, canvas.height); // should log 1365, 768
+        document.body.appendChild(link);
         link.click();
+        document.body.removeChild(link);
         document.getElementById('loader').style.display = 'none';
       }, 1000);
     }
